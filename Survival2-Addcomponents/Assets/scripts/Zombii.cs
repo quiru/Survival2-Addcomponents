@@ -74,7 +74,7 @@ public class Zombii : MonoBehaviour
             if (utilZombii.estado == (DatosZombi.Estados)0)
             {
                 utilZombii.estado = (DatosZombi.Estados)1;
-                cambiaMov = Random.Range(0, 5);
+                cambiaMov = Random.Range(0, 4);
             }
             else
             {

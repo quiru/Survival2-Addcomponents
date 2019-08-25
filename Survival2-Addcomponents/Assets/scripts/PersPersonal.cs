@@ -5,6 +5,8 @@ using UnityEngine;
 public class PersPersonal : MonoBehaviour
 {
     DatosZombi utilZombi;
+
+    DatosCiudd utilCiud;
     void Start()
     {
         
@@ -42,7 +44,12 @@ public class PersPersonal : MonoBehaviour
         if(colision.transform.name == "Zombi")
         {
             utilZombi = colision.gameObject.GetComponent<Zombii>().utilZombii;
-            Debug.Log("waaarrrr "+"quiero comer "+ utilZombi.queComer);
+            Debug.Log("waaarrrr quiero comer "+ utilZombi.queComer);
+        }
+        else if(colision.transform.name == "Ciudadanito")
+        {
+            utilCiud = colision.gameObject.GetComponent<Ciudadano>().utilCiudd;
+            Debug.Log("hola soy "+ utilCiud.varNombrs + " y tengo " + utilCiud.edadCiudd);
         }
     }
 }
