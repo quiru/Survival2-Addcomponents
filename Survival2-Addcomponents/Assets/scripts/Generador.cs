@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Generador : MonoBehaviour
 {
-    GameObject heroe;
+    GameObject heroe;  //variables para crear personajes
     GameObject zombi;
     GameObject ciudadano;
     DatosZombi utilZombi;
     
     void Start()
     {
-        heroe = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        heroe.AddComponent<PersPersonal>();
+        heroe = GameObject.CreatePrimitive(PrimitiveType.Cube); //crea personajes
+        heroe.AddComponent<PersPersonal>(); //añade componentes
         heroe.AddComponent<MovFps>();
         heroe.AddComponent<Rigidbody>();
-        GameObject movCam = new GameObject();
+        GameObject movCam = new GameObject(); //crea un objeto para añadirle la camara y añadir este al heroe
         movCam.AddComponent<Camera>();
         movCam.AddComponent<CamFps>();
         movCam.transform.SetParent(heroe.transform);
         heroe.transform.position = new Vector3(Random.Range(1, 21), 0.5f, Random.Range(1, 21));
 
-        int numZomb = Random.Range(9, 15);
-        for (int i = 0; i < numZomb; i++)
+        int numZomb = Random.Range(9, 15); //random para creacion de zombies
+        for (int i = 0; i < numZomb; i++) //for para crear zombis
         {
             
             zombi = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -34,8 +34,8 @@ public class Generador : MonoBehaviour
             zombi.name = "Zombi";
         }
 
-        int numCiudd = Random.Range(5, 20 - numZomb);
-        for(int i = 0; i < numCiudd; i++)
+        int numCiudd = Random.Range(5, 20 - numZomb); //random para creacion de ciudadanos
+        for(int i = 0; i < numCiudd; i++) //for para creacion de ciudadanos
         {
             ciudadano = GameObject.CreatePrimitive(PrimitiveType.Cube);
             ciudadano.AddComponent<Ciudadano>();
@@ -43,9 +43,5 @@ public class Generador : MonoBehaviour
             ciudadano.AddComponent<Rigidbody>();
             ciudadano.name = "Ciudadanito";
         }
-    }
-    void Update()
-    {
-        
     }
 }

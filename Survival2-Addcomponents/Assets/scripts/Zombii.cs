@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Zombii : MonoBehaviour
 {
-    public DatosZombi utilZombii;
+    public DatosZombi utilZombii; //variable tipo estructura para utilizar los datos del zombi
     public Vector3 mov;
-    public int cambiaMov;
+    public int cambiaMov; //variable para cambiar el movimiento
 
     void Awake()
     {
-        int numColor = Random.Range(1, 4);
-        switch (numColor)
+        int numColor = Random.Range(1, 4); //variable para dar color
+        switch (numColor) //switch para dar color a el zombi segun numColor
         {
             case 1:
                 utilZombii.colorZombi = Color.cyan;
@@ -24,9 +24,9 @@ public class Zombii : MonoBehaviour
                 break;
         }
 
-        int darGusto = Random.Range(0, 5);
-        utilZombii.queComer = (DatosZombi.Gusto)darGusto;
-        mov = new Vector3(Random.Range(1, 20), 0.5f, Random.Range(1, 20));
+        int darGusto = Random.Range(0, 5); //variable para dar gusto
+        utilZombii.queComer = (DatosZombi.Gusto)darGusto; //da gusto al zombi
+        mov = new Vector3(Random.Range(1, 20), 0.5f, Random.Range(1, 20)); // vector para dar ubicacion
         cambiaMov = 0;
     }
 
@@ -39,7 +39,7 @@ public class Zombii : MonoBehaviour
 
     void Update()
     {
-        switch (utilZombii.estado)
+        switch (utilZombii.estado) //switch para mover el zombi segun estado
         {
             case DatosZombi.Estados.idle:
                 transform.eulerAngles += new Vector3(0, 0.5f, 0);
@@ -67,7 +67,7 @@ public class Zombii : MonoBehaviour
         }
     }
 
-    IEnumerator cambioEstado()
+    IEnumerator cambioEstado() //corrutina para cambiar de estado cada 5 seg
     {
         while (true)
         {
@@ -85,21 +85,21 @@ public class Zombii : MonoBehaviour
     }
 }
 
-public struct DatosZombi
+public struct DatosZombi //estructura para guardar los datos del zombi
 {
     public Color colorZombi;
 
-    public enum Gusto
+    public enum Gusto //enum para guardar gustos de zombi
     {
         culito, deditos, uñas, teticas, homoplato
     }
-    public Gusto queComer;
+    public Gusto queComer; //variable de tipo enum para el gusto
 
-    public enum Estados
+    public enum Estados //enum para guardar estados
     {
         idle, moving
     }
-    public Estados estado;
+    public Estados estado; //variable de tipo enum para los estados
 }
 
 
